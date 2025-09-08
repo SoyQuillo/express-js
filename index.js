@@ -1,26 +1,33 @@
-const express = require('express')
+const express = require("express");
 
-const app = express()
+const app = express();
 
-app.get('/products', (req, res) =>{
-    res.send('Lista de productos')
-})
- 
-app.post('/products', (req, res) =>{
-    res.send('Creando productos')
-})
+app.get("/", (req, res) => {
+  res.send("Hola mundo");
+});
 
-app.put('/products', (req, res) =>{
-    res.send('Actualizando un producto')
-})
+app.get("/miarchivo", (req, res) => {
+  res.sendFile("./javascript.png", {
+    root: __dirname,
+  });
+});
 
-app.delete('/products', (req, res) =>{
-    res.send('Eliminando un producto')
-})
+app.get("/user", (req, res) => {
+  res.json({
+    name: "santiago",
+    lastname: "quintero",
+    edad: "40",
+    points: [1, 2, 3],
+    address: {
+      city: "new york",
+      street: "some steet 123",
+    },
+  });
+});
 
-app.patch('/products', (req, res) =>{
-    res.send('Actualizando una parte del producto')
-})
+app.get("/isAlive", (req, res) => {
+  res.sendStatus(204);
+});
 
-app.listen(3000)
-console.log(` Server on port ${3000}`)
+app.listen(3000);
+console.log(` Server on port ${3000}`);
