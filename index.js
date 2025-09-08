@@ -2,13 +2,8 @@ const express = require("express");
 
 const app = express();
 
-app.get('/search', (req, res) =>{
-    console.log(req.query)
-    if(req.query.q == 'javascript boojs'){
-        res.send("lista de libros de js")
-    }else{
-        res.send("pagina normal")
-    }
+app.all('/info', (req, res) =>{
+    res.send('server info')
 })
 
 app.listen(3000);
