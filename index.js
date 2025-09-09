@@ -1,14 +1,18 @@
 const express = require("express");
+const morgan = require('morgan');
 
 const app = express();
+
+app.use(morgan('dev'));
+app.use(express.json())
 
 app.use((req, res, next) =>{
     console.log(`Ruta: ${req.url} metodo: ${req.method} `)
     next()
 })
 
-app.get("/profile", (req, res) => {
-
+app.post("/profile", (req, res) => {
+    console(req.body)
     res.send('profile page')
 
 });
